@@ -23,7 +23,7 @@ github_username: lukearmistead
 
 # Build settings
 markdown: kramdown
-theme: poole/lanyon
+theme: minima
 plugins:
   - jekyll-feed
 
