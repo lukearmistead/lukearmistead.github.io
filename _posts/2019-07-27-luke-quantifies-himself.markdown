@@ -13,7 +13,7 @@ Over the years, I've used dozens of tools to log and synthesize my life's happen
 
 
 <div align="center">
-<img src="../assets/notebook.jpg" width="300"/>
+<img src="/assets/notebook.jpg" width="300"/>
 
 _The scary blank page won't intimidate you unless you let it intimidate you._
 </div>
@@ -22,7 +22,7 @@ _The scary blank page won't intimidate you unless you let it intimidate you._
  For the entirety of 2018 I kept a bullet journal. The coolest part of my system was quantifying habits. Each day I'd write down, say, the number of hours I'd slept that night. At the end of the month, I'd pull the weekly averages into a hand drawn line graph kind of like this.
 
 <div align="center">
-<img src="../assets/habit_tracker.jpg" width="300"/>
+<img src="/assets/habit_tracker.jpg" width="300"/>
 
 _Oh my habit tracker? You probably haven't heard of it._
 </div>
@@ -36,7 +36,7 @@ The bullet journal is cool. So cool. So incredibly heavyweight. By the time I'd 
 It turns out that we create a lot of data just by living in the 21st Century. Our banks log transactions, our calendars log gatherings, and our heart rate trackers log activity. What if we pulled all that stuff together and treated self reflection like an analysis? Did you miss that productivity goal you set last month? Now you can analytically interrogate whatever data you've gathered for the root cause.
 
 <div align="center">
-<img src="../assets/interrogate_data.jpg" width="300"/>
+<img src="/assets/interrogate_data.jpg" width="300"/>
 
 _Who made you do it, y? Was it x? I want NAMES!!!_
 </div>
@@ -44,7 +44,7 @@ _Who made you do it, y? Was it x? I want NAMES!!!_
 Once you're done, making a plan to hit your goal next month becomes trivial. Even cooler, what if we tried random experiments? Want to try the Pomodoro Technique? Randomly assign days with either a tomato timer or with your existing method and measure which show has the highest productivity.
 
 <div align="center">
-<img src="../assets/chicken_timer.jpg" width="300"/>
+<img src="/assets/chicken_timer.jpg" width="300"/>
 
 _Experimental arm B, the scrappy competitor to the classic Pomodoro Technique_
 </div>
