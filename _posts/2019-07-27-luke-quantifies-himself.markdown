@@ -11,15 +11,21 @@ As a data scientist, I like data. As an optimization junkie, I like reflecting t
 
 Over the years, I've used dozens of tools to log and synthesize my life's happenings, tasks, and habits. Most recently, I ditched fancy apps and went back my curmudgeonly roots by picking up good old fashioned pen and paper.
 
-<img src="/assets/notebook.jpg" width="300"/>
+
+<div align="center">
+<img src="../assets/notebook.jpg" width="300"/>
 
 _The scary blank page won't intimidate you unless you let it intimidate you._
+</div>
+
 
  For the entirety of 2018 I kept a bullet journal. The coolest part of my system was quantifying habits. Each day I'd write down, say, the number of hours I'd slept that night. At the end of the month, I'd pull the weekly averages into a hand drawn line graph kind of like this.
 
-<img src="/assets/habit_tracker.jpg" width="200"/>
+<div align="center">
+<img src="../assets/habit_tracker.jpg" width="300"/>
 
 _Oh my habit tracker? You probably haven't heard of it._
+</div>
 
 ## And it's discontents
 
@@ -29,15 +35,19 @@ The bullet journal is cool. So cool. So incredibly heavyweight. By the time I'd 
 
 It turns out that we create a lot of data just by living in the 21st Century. Our banks log transactions, our calendars log gatherings, and our heart rate trackers log activity. What if we pulled all that stuff together and treated self reflection like an analysis? Did you miss that productivity goal you set last month? Now you can analytically interrogate whatever data you've gathered for the root cause.
 
-<img src="/assets/interrogate_data.jpg" width="200"/>
+<div align="center">
+<img src="../assets/interrogate_data.jpg" width="300"/>
 
 _Who made you do it, y? Was it x? I want NAMES!!!_
+</div>
 
 Once you're done, making a plan to hit your goal next month becomes trivial. Even cooler, what if we tried random experiments? Want to try the Pomodoro Technique? Randomly assign days with either a tomato timer or with your existing method and measure which show has the highest productivity.
 
-<img src="/assets/chicken_timer.jpg" width="200"/>
+<div align="center">
+<img src="../assets/chicken_timer.jpg" width="300"/>
 
 _Experimental arm B, the scrappy competitor to the classic Pomodoro Technique_
+</div>
 
 Your automated data pipeline will handle the tedium of gathering and aggregating the information, leaving you free to engage in the fun of analyzing the results and turning them into a plan.
 
