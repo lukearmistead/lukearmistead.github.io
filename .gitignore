@@ -4,3 +4,4 @@ _site
 python-fitbit
 *.swp
 .DS_store
+.ipynb*
