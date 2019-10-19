@@ -5,3 +5,4 @@ python-fitbit
 *.swp
 .DS_store
 .ipynb*
+creds.yml
