@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Extracting health data from Fitbit (Work in Progress)"
