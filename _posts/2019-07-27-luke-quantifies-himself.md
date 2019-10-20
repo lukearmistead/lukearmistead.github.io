@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Overengineering the quantified self: background"
+title: "Overengineering the quantified self"
 date: 2019-07-27
 categories: jekyll update
 ---

@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title:  "Extracting health data from Fitbit (Work in Progress)"
@@ -41,22 +42,6 @@ We'll make heavy use of the `python-fitbit` [package](https://github.com/orcasgi
 !pip3 install --upgrade requests-oauthlib==1.1.0 oauthlib==2.1.0
 ```
 
-    fatal: destination path 'python-fitbit' already exists and is not an empty directory.
-    [31mERROR: Invalid requirement: 'python-fitbit/requirements/base.txt'
-    It looks like a path. It does exist. The argument you provided (python-fitbit/requirements/base.txt) appears to be a requirements file. If that is the case, use the '-r' flag to install the packages specified within it.[0m
-    [33mWARNING: You are using pip version 19.1.1, however version 19.3.1 is available.
-    You should consider upgrading via the 'pip install --upgrade pip' command.[0m
-    Requirement already up-to-date: requests-oauthlib==1.1.0 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (1.1.0)
-    Requirement already up-to-date: oauthlib==2.1.0 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (2.1.0)
-    Requirement already satisfied, skipping upgrade: requests>=2.0.0 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (from requests-oauthlib==1.1.0) (2.22.0)
-    Requirement already satisfied, skipping upgrade: idna<2.9,>=2.5 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (from requests>=2.0.0->requests-oauthlib==1.1.0) (2.6)
-    Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (from requests>=2.0.0->requests-oauthlib==1.1.0) (1.22)
-    Requirement already satisfied, skipping upgrade: chardet<3.1.0,>=3.0.2 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (from requests>=2.0.0->requests-oauthlib==1.1.0) (3.0.4)
-    Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /Users/luke.armistead/.pyenv/versions/3.6.3/envs/py3/lib/python3.6/site-packages (from requests>=2.0.0->requests-oauthlib==1.1.0) (2017.11.5)
-    [33mWARNING: You are using pip version 19.1.1, however version 19.3.1 is available.
-    You should consider upgrading via the 'pip install --upgrade pip' command.[0m
-
-
 Mosey over to a directory where you can import the `gather_keys_oauth2` module from python-fitbit to get your access and refresh tokens and get that authorization you deserve!
 
 
@@ -76,30 +61,6 @@ server.browser_authorize()
 keys = server.fitbit.client.session.token
 ACCESS_TOKEN, REFRESH_TOKEN = str(keys['access_token']), str(keys['refresh_token'])
 ```
-
-    [20/Oct/2019:14:05:23] ENGINE Listening for SIGTERM.
-    [20/Oct/2019:14:05:23] ENGINE Listening for SIGHUP.
-    [20/Oct/2019:14:05:23] ENGINE Listening for SIGUSR1.
-    [20/Oct/2019:14:05:23] ENGINE Bus STARTING
-    CherryPy Checker:
-    The Application mounted at '' has an empty config.
-    
-    [20/Oct/2019:14:05:23] ENGINE Started monitor thread 'Autoreloader'.
-    [20/Oct/2019:14:05:23] ENGINE Serving on http://127.0.0.1:8080
-    [20/Oct/2019:14:05:23] ENGINE Bus STARTED
-
-
-    127.0.0.1 - - [20/Oct/2019:14:05:25] "GET /?code=829e48d7932d973dd7c827235fb2200cd3623b35&state=JFieoWwOLrb8zShMDAriQcrJvMkio1 HTTP/1.1" 200 122 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"
-
-
-    [20/Oct/2019:14:05:26] ENGINE Bus STOPPING
-    [20/Oct/2019:14:05:31] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
-    [20/Oct/2019:14:05:31] ENGINE Stopped thread 'Autoreloader'.
-    [20/Oct/2019:14:05:31] ENGINE Bus STOPPED
-    [20/Oct/2019:14:05:31] ENGINE Bus EXITING
-    [20/Oct/2019:14:05:31] ENGINE Bus EXITED
-    [20/Oct/2019:14:05:31] ENGINE Waiting for child threads to terminate...
-
 
 If you're like me, you hit a 500 error here. [The Fitbit help forum suggests](https://community.fitbit.com/t5/Web-API-Development/Invalid-Client-Error/td-p/3290376) and my experience corroborates that you can get around this by downgrading to `requests-oauthlib==1.1.0` and `oauthlib==2.1.0`.
 
