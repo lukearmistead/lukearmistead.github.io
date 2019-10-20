@@ -6,3 +6,6 @@ python-fitbit
 .DS_store
 .ipynb*
 creds.yml
+*.csv
+*.feather
+data/*
