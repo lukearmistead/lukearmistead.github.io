@@ -9,3 +9,4 @@ creds.yml
 *.csv
 *.feather
 data/*
+notebooks/quickstart/*
