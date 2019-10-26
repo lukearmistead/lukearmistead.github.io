@@ -1,24 +1,21 @@
 ---
 layout: post
-title:  "Extracting health data from Fitbit (Work in Progress)"
+title:  "Extracting health data from Fitbit"
 date:   2019-10-20
 categories: jekyll update
 ---
 
-In this post, we'll cover getting data from Fitbit, doing a little cleaning, and storing it as a csv.
+[Last time](http://luuuuke.com/jekyll/update/2019/07/27/luke-quantifies-himself.html), I laid out the idea of rigging a pipeline to enable data driven self reflection and improvement. The first step is getting data. We'll start with health data from Fitbit. This post will cover using an API to grab the numbers, doing a little cleaning, and storing it as a csv. We won't get too nitty gritty. If you're looking for more detail, I'd recommend checking out this [this blog post](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873).
 
 #### TODO:
 
-- Write intro
 - Write conclusion
 - Use bolding to make steps a little more legible
 - Make voice consistent
 
 ## Step 1: Register your personal app with Fitbit
 
-Start by registering your personal app with Fitbit at their [fancy developer portal](https://dev.fitbit.com/apps/new). We're not going to get too nitty gritty here but [this blog post](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) has some very helpful details.
-
-Navigate to your newly created app and grab the contents of the "OAuth 2.0 Client ID" and "Client Secret". In the spirit of not posting creds for all the internet to enjoy, I stored mine locally in a yaml file.
+Start by registering your personal app with Fitbit at their [fancy developer portal](https://dev.fitbit.com/apps/new). The [aforementioned post](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) details the right inputs for the form. Once you're done, navigate to your newly created app and grab the contents of the "OAuth 2.0 Client ID" and "Client Secret". In the spirit of not posting creds for all the internet to enjoy, I stored mine locally in a yaml file.
 
 
 ```python
@@ -32,7 +29,7 @@ CLIENT_SECRET = creds['fitbit']['client_secret']
 
 ## Step 2: Authorize and connect to Fitbit
 
-We'll make heavy use of the `python-fitbit` [package](https://github.com/orcasgit/python-fitbit). You'll also need a specific `requests-oauthlib` and `oauthlib` to avoid errors when you try to authorize.
+We'll make heavy use of the `python-fitbit` [package from Jake from Orcas](https://github.com/orcasgit/python-fitbit). We also install specific versions of the `requests-oauthlib` and `oauthlib` libraries to avoid errors when you try to authorize.
 
 
 ```python
@@ -41,15 +38,14 @@ We'll make heavy use of the `python-fitbit` [package](https://github.com/orcasgi
 !pip3 install --upgrade requests-oauthlib==1.1.0 oauthlib==2.1.0
 ```
 
-Mosey over to a directory where you can import the `gather_keys_oauth2` module from python-fitbit to get your access and refresh tokens and get that authorization you deserve!
+Navigate to the `python-fitbit` directory.
 
 
 ```python
 cd python-fitbit
 ```
 
-    /Users/luke.armistead/workspace/projects/lukearmistead.github.io/notebooks/python-fitbit
-
+And grab the tools contained in the `gather_keys_oauth2` module to get authorized with the API.
 
 
 ```python
@@ -63,7 +59,7 @@ ACCESS_TOKEN, REFRESH_TOKEN = str(keys['access_token']), str(keys['refresh_token
 
 If you're like me, you hit a 500 error here. [The Fitbit help forum suggests](https://community.fitbit.com/t5/Web-API-Development/Invalid-Client-Error/td-p/3290376) and my experience corroborates that you can get around this by downgrading to `requests-oauthlib==1.1.0` and `oauthlib==2.1.0`.
 
-Finally, go ahead and create a client to ferry your fitbit data requests
+Finally, go ahead and create a client to ferry your fitbit data requests.
 
 
 ```python
@@ -78,9 +74,9 @@ client = fitbit.Fitbit(
 )
 ```
 
-## Step 3: Now for the good stuff. Let's get that data!
+If you made it this far, you've successfully created a bridge to your Fitbit data. Now it's time for the good stuff - getting and manipulating your numbers!
 
-Hit [Fitbit's Web API](https://dev.fitbit.com/build/reference/web-api/) to pull in your data. Heads up, Fitbit [limits the number of daily requests you can make](https://dev.fitbit.com/build/reference/web-api/heart-rate/). Be careful not to over-ask or you'll have to wait a day to try again.
+## Step 3: Get your data
 
 Start by establishing the range of time we want to pull. Fitbit gets testy if you request more than 100 days of data. We'll abide by this until we have a need for more historical data.
 
@@ -92,7 +88,7 @@ today = datetime.now()
 base_date = today - timedelta(days=100) # Fitbit doesn't like if we request more than 100 days. Meh. Fine.
 ```
 
-Next, let's request our data! We'll simplify this by using the `time-series` method built into our `python-fitbit` package.
+Next, let's use [Fitbit's Web API](https://dev.fitbit.com/build/reference/web-api/) to request our data! We'll simplify this by using the `time-series` method built into our `python-fitbit` package. Heads up, Fitbit [limits the number of daily requests you can make](https://dev.fitbit.com/build/reference/web-api/heart-rate/). Be careful not to over-ask or you'll have to wait a day to try again.
 
 
 ```python
@@ -126,7 +122,7 @@ example
 
 
 
-Pull down the rest of your data. I grabbed the stuff that interests me, but there is a lot more! Check out the [Fitbit API documentation](https://dev.fitbit.com/build/reference/web-api/) to learn about what's possible.
+Pull down the rest of your data. I grabbed the stuff that interests me, but there's a lot more! Check out the [Fitbit API documentation](https://dev.fitbit.com/build/reference/web-api/) to learn about what's possible.
 
 
 ```python
@@ -162,31 +158,7 @@ Some endpoints have different structures so we'll have to write some custom logi
 ```python
 hearts = client.time_series(resource='activities/heart', base_date=base_date, end_date=today)
 hearts['activities-heart'][0]
-```
 
-
-
-
-    {'dateTime': '2019-07-12',
-     'value': {'customHeartRateZones': [],
-      'heartRateZones': [{'caloriesOut': 2273.24235,
-        'max': 95,
-        'min': 30,
-        'minutes': 1167,
-        'name': 'Out of Range'},
-       {'caloriesOut': 1197.4905,
-        'max': 133,
-        'min': 95,
-        'minutes': 200,
-        'name': 'Fat Burn'},
-       {'caloriesOut': 0, 'max': 161, 'min': 133, 'minutes': 0, 'name': 'Cardio'},
-       {'caloriesOut': 0, 'max': 220, 'min': 161, 'minutes': 0, 'name': 'Peak'}],
-      'restingHeartRate': 59}}
-
-
-
-
-```python
 d = {
     'Fat Burn': [],
     'Cardio': [],
@@ -206,6 +178,8 @@ for entry in list(hearts['activities-heart']):
                 d[k].append(value.get('minutes'))
 hearts = d
 ```
+
+## Step 4: Organize and store your data
 
 Next we'll organize our data it into pandas dataframes. Let's start by setting up a foundational table with all the dates we'll need.
 
