@@ -5,13 +5,7 @@ date:   2019-10-20
 categories: jekyll update
 ---
 
-[Last time](http://luuuuke.com/jekyll/update/2019/07/27/luke-quantifies-himself.html), I laid out the idea of rigging a pipeline to enable data driven self reflection and improvement. The first step is getting data. We'll start with health data from Fitbit. This post will cover using an API to grab the numbers, doing a little cleaning, and storing it as a csv. We won't get too nitty gritty. If you're looking for more detail, I'd recommend checking out this [this blog post](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873).
-
-#### TODO:
-
-- Write conclusion
-- Use bolding to make steps a little more legible
-- Make voice consistent
+[Last time](http://luuuuke.com/jekyll/update/2019/07/27/luke-quantifies-himself.html), I laid out the idea of rigging a pipeline to enable data driven self reflection and improvement. The first step is getting data. We'll start with Fitbit. This post steps through using an API to grab the numbers, doing a little cleaning, and storing it as a csv. We won't get too nitty gritty. If you're looking for more detail, I'd highly recommend checking out this [this awesome blog post](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873)!
 
 ## Step 1: Register your personal app with Fitbit
 
@@ -457,9 +451,3 @@ And finally export as a CSV!
 ```python
 df.to_csv('../../data/{}_to_{}_fitbit_data.csv'.format(base_date.date(), today.date()), index=False)
 ```
-
-- Facts => day / wk / mo tables
-- Add in goals and metrics
-- Daily pull
-- Set up ETL to pull down historical data
-- Store data remotely
